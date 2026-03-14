@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0f172a;
+  --color-slate: #1e293b;
+  --color-accent: #3b82f6;
+  --color-primary: #4030e8;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-white font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Base Dark Mode Clay Classes (Default) */
+.clay-card, .glass-panel {
+  @apply bg-slate-800 border border-slate-700/50 transition-transform hover:scale-[1.01];
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.4), -8px -8px 16px rgba(255,255,255,0.03), inset 2px 2px 4px rgba(255,255,255,0.05);
+}
+
+.clay-inset {
+  @apply bg-slate-900/60;
+  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.3), inset -4px -4px 8px rgba(255,255,255,0.03);
+}
+
+.clay-active-nav {
+  @apply bg-slate-800;
+  box-shadow: 6px 6px 12px rgba(0,0,0,0.4), -6px -6px 12px rgba(255,255,255,0.03), inset 2px 2px 4px rgba(255,255,255,0.05);
+}
+
+.clay-primary {
+  @apply bg-primary text-white;
+  box-shadow: 6px 6px 12px rgba(64,48,232,0.3), inset 3px 3px 6px rgba(255,255,255,0.3), inset -3px -3px 6px rgba(0,0,0,0.1);
+}
+
+.clay-button-primary {
+  @apply bg-primary text-white;
+  box-shadow: inset -4px -4px 8px 0px rgba(0, 0, 0, 0.3), inset 4px 4px 8px 0px rgba(255, 255, 255, 0.3), 8px 8px 16px 0px rgba(64, 48, 232, 0.2);
+  transition: all 0.2s ease;
+}
+.clay-button-primary:active {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+  transform: scale(0.98);
+}
+
+.clay-button-secondary {
+  @apply bg-slate-800 text-slate-300;
+  box-shadow: inset -3px -3px 6px 0px rgba(255, 255, 255, 0.05), inset 3px 3px 6px 0px rgba(0, 0, 0, 0.2), 6px 6px 12px 0px rgba(0, 0, 0, 0.2);
+}
+
+.clay-input {
+  @apply bg-slate-900/80 text-white placeholder-slate-500 border-none outline-none;
+  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.3), inset -4px -4px 8px 0px rgba(255, 255, 255, 0.05);
+}
+
+.clay-pill {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+/* Light Mode Overrides */
+html.light body {
+  background: #f6f6f8 !important;
+  color: #1e293b !important;
+}
+
+html.light .clay-card, html.light .glass-panel {
+  @apply bg-[#f6f6f8];
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset -8px -8px 16px 0px rgba(255, 255, 255, 0.7), inset 8px 8px 16px 0px rgba(0, 0, 0, 0.05), 12px 12px 24px 0px rgba(0, 0, 0, 0.05);
+}
+
+html.light .clay-inset {
+  @apply bg-[#f0f0f4];
+  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.05), inset -4px -4px 8px 0px rgba(255, 255, 255, 0.8);
+}
+
+html.light .clay-active-nav {
+  background: #ffffff;
+  box-shadow: 6px 6px 12px #e0e0e5, -6px -6px 12px #ffffff, inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+html.light .clay-button-secondary {
+  @apply bg-[#f6f6f8] text-slate-700;
+  box-shadow: inset -3px -3px 6px 0px rgba(255, 255, 255, 0.9), inset 3px 3px 6px 0px rgba(0, 0, 0, 0.05), 6px 6px 12px 0px rgba(0, 0, 0, 0.05);
+}
+
+html.light .clay-input {
+  @apply bg-[#f0f0f4] text-slate-700 placeholder-slate-400;
+  box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.05), inset -4px -4px 8px 0px rgba(255, 255, 255, 0.8);
+}
+
+html.light .clay-pill {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08), inset -2px -2px 4px rgba(0, 0, 0, 0.05), inset 2px 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* Old classes mapped to clay */
+
+
+/* Smooth transition for theme switching */
+html.light *, html.dark * {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease, box-shadow 0.25s ease;
+}
+
+/* Specific text overrides for light mode */
+html.light .text-white { color: #1e293b !important; }
+html.light .clay-primary .text-white,
+html.light .clay-button-primary .text-white { color: #ffffff !important; }
+
+html.light .text-slate-300, html.light .text-slate-400 { color: #64748b !important; }
+html.light .text-slate-500 { color: #94a3b8 !important; }
+html.light .border-slate-700, html.light .border-slate-700\/50, html.light .border-slate-800 { border-color: #e2e8f0 !important; }
+html.light .bg-slate-900\/80 { background: rgba(0, 0, 0, 0.3) !important; }
+
+html.light .text-teal-400 { color: #0d9488 !important; }
+html.light .text-amber-400 { color: #d97706 !important; }
+html.light .text-red-400 { color: #dc2626 !important; }
+html.light .text-green-400 { color: #16a34a !important; }
+html.light .text-purple-400 { color: #9333ea !important; }
+html.light .text-blue-400 { color: #2563eb !important; }
+html.light .text-orange-400 { color: #ea580c !important; }
