@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4030e8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    boxShadow: {
+                        'clay-sm': 'inset -4px -4px 8px rgba(0,0,0,0.05), inset 4px 4px 8px rgba(255,255,255,0.8), 6px 6px 12px rgba(0,0,0,0.08)',
+                        'clay-md': 'inset -6px -6px 12px rgba(0,0,0,0.05), inset 6px 6px 12px rgba(255,255,255,0.8), 10px 10px 20px rgba(0,0,0,0.1)',
+                        'clay-primary': 'inset -6px -6px 12px rgba(0,0,0,0.2), inset 6px 6px 12px rgba(255,255,255,0.3), 10px 10px 20px rgba(64,48,232,0.3)',
+                        'clay-inset': 'inset 4px 4px 8px rgba(0,0,0,0.05), inset -4px -4px 8px rgba(255,255,255,0.8)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .clay-card {
+            background: #f6f6f8;
+            box-shadow: inset -8px -8px 16px 0px rgba(255, 255, 255, 0.7),
+                inset 8px 8px 16px 0px rgba(0, 0, 0, 0.05),
+                12px 12px 24px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        .clay-button-primary {
+            background: #4030e8;
+            box-shadow: inset -4px -4px 8px 0px rgba(0, 0, 0, 0.3),
+                inset 4px 4px 8px 0px rgba(255, 255, 255, 0.3),
+                8px 8px 16px 0px rgba(64, 48, 232, 0.2);
+        }
+
+        .clay-button-secondary {
+            background: #f6f6f8;
+            box-shadow: inset -3px -3px 6px 0px rgba(255, 255, 255, 0.9),
+                inset 3px 3px 6px 0px rgba(0, 0, 0, 0.05),
+                6px 6px 12px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        .clay-input {
+            background: #f0f0f4;
+            box-shadow: inset 4px 4px 8px 0px rgba(0, 0, 0, 0.05),
+                inset -4px -4px 8px 0px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between border-b border-primary/10 px-6 py-4 lg:px-20 bg-background-light/80 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-4">
+                    <div class="size-10 clay-button-primary rounded-xl flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined">inventory_2</span>
+                    </div>
+                    <h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold tracking-tight">Inventra</h2>
+                </div>
+                <div class="hidden md:flex flex-1 justify-center gap-8">
+                    <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#">Dashboard</a>
+                    <a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">Products</a>
+                    <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#">Inventory</a>
+                    <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                        href="#">Analytics</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button
+                        class="size-10 flex items-center justify-center rounded-full clay-button-secondary text-slate-600">
+                        <span class="material-symbols-outlined text-[20px]">notifications</span>
+                    </button>
+                    <button
+                        class="size-10 flex items-center justify-center rounded-full clay-button-secondary text-slate-600">
+                        <span class="material-symbols-outlined text-[20px]">settings</span>
+                    </button>
+                    <div class="size-10 rounded-full border-2 border-white clay-md overflow-hidden">
+                        <img class="w-full h-full object-cover" data-alt="User profile avatar portrait"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeiorkEEUFo6tpeBDos6TH1Jj7kn4VbAGVIingRS72Ntkl8z0l0CLQohqOUGdhGg2Xgatcbn8i09Q3sJ9y0u0P0WpV70zTBytJHqWdDK2WAtkItKjxo1LPD5N9ylBwLFxWUF4KzrXP1SKQ-iZHymt3wm9HjowmFvEkjZj7ULTUXHcMnl2oPkC3uGPqCqctB-RWjJuAOHsgon60xfw0XAwqEet2Lz7X7xu_LF-NiF9aH_Mykwi3EqgwFbBLPpGTjvCxysGYTbxZC-Y" />
+                    </div>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-10 px-6 lg:px-20">
+                <div class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-8">
+                    <div class="flex flex-wrap justify-between items-end gap-6">
+                        <div class="flex flex-col gap-2">
+                            <h1 class="text-slate-900 dark:text-white text-5xl font-black leading-tight tracking-tight">
+                                Product Catalog</h1>
+                            <p class="text-slate-500 dark:text-slate-400 text-lg font-medium">Streamlined inventory
+                                management with tactile precision.</p>
+                        </div>
+                        <button
+                            class="flex items-center justify-center gap-2 px-8 py-4 clay-button-primary text-white rounded-2xl text-base font-bold transition-transform active:scale-95">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span>Add New Product</span>
+                        </button>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <label
+                                class="flex items-center h-14 w-full clay-input rounded-2xl px-4 gap-3 focus-within:ring-2 ring-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-slate-400">search</span>
+                                <input
+                                    class="bg-transparent border-none focus:ring-0 w-full text-slate-700 placeholder:text-slate-400 font-medium"
+                                    placeholder="Search products, SKUs, or categories..." type="text" />
+                            </label>
+                        </div>
+                        <div class="flex gap-3 overflow-x-auto pb-2 md:pb-0">
+                            <button
+                                class="flex items-center gap-2 px-5 py-2 clay-button-secondary rounded-full text-slate-700 font-bold whitespace-nowrap active:scale-95 transition-all">
+                                <span>All Categories</span>
+                                <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-2 px-5 py-2 clay-button-secondary rounded-full text-slate-700 font-bold whitespace-nowrap active:scale-95 transition-all">
+                                <span>Electronics</span>
+                                <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-2 px-5 py-2 clay-button-secondary rounded-full text-slate-700 font-bold whitespace-nowrap active:scale-95 transition-all">
+                                <span>Furniture</span>
+                                <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="clay-card rounded-3xl p-4 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-separate border-spacing-y-4">
+                                <thead>
+                                    <tr class="text-slate-400 text-sm font-bold uppercase tracking-wider">
+                                        <th class="px-6 py-2">Product Name</th>
+                                        <th class="px-6 py-2">SKU</th>
+                                        <th class="px-6 py-2">Category</th>
+                                        <th class="px-6 py-2">Stock Level</th>
+                                        <th class="px-6 py-2">Price</th>
+                                        <th class="px-6 py-2">Status</th>
+                                        <th class="px-6 py-2 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        class="clay-button-secondary group hover:scale-[1.01] transition-transform cursor-pointer">
+                                        <td class="px-6 py-5 rounded-l-2xl font-bold text-slate-800">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="size-10 rounded-xl clay-input flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-primary">chair</span>
+                                                </div>
+                                                Cloud Ergonomic Chair
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-slate-500 font-medium italic">CH-2024-001</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 clay-input rounded-full text-xs font-bold text-primary">Furniture</span>
+                                        </td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-24 h-2 clay-input rounded-full overflow-hidden">
+                                                    <div class="h-full bg-primary rounded-full shadow-lg"
+                                                        style="width: 85%;"></div>
+                                                </div>
+                                                <span class="text-sm font-bold text-slate-700">85</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 font-bold text-slate-800">$499.00</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-black uppercase tracking-tight shadow-inner">In
+                                                Stock</span>
+                                        </td>
+                                        <td class="px-6 py-5 rounded-r-2xl text-right">
+                                            <button
+                                                class="size-8 rounded-full clay-input flex items-center justify-center text-slate-400 hover:text-primary transition-colors ml-auto">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="clay-button-secondary group hover:scale-[1.01] transition-transform cursor-pointer">
+                                        <td class="px-6 py-5 rounded-l-2xl font-bold text-slate-800">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="size-10 rounded-xl clay-input flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-primary">mouse</span>
+                                                </div>
+                                                Zen Silent Mouse
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-slate-500 font-medium italic">MS-2024-052</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 clay-input rounded-full text-xs font-bold text-primary">Electronics</span>
+                                        </td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-24 h-2 clay-input rounded-full overflow-hidden">
+                                                    <div class="h-full bg-orange-400 rounded-full shadow-lg"
+                                                        style="width: 25%;"></div>
+                                                </div>
+                                                <span class="text-sm font-bold text-slate-700">12</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 font-bold text-slate-800">$89.00</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs font-black uppercase tracking-tight shadow-inner">Low
+                                                Stock</span>
+                                        </td>
+                                        <td class="px-6 py-5 rounded-r-2xl text-right">
+                                            <button
+                                                class="size-8 rounded-full clay-input flex items-center justify-center text-slate-400 hover:text-primary transition-colors ml-auto">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="clay-button-secondary group hover:scale-[1.01] transition-transform cursor-pointer">
+                                        <td class="px-6 py-5 rounded-l-2xl font-bold text-slate-800">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="size-10 rounded-xl clay-input flex items-center justify-center">
+                                                    <span class="material-symbols-outlined text-primary">keyboard</span>
+                                                </div>
+                                                Mechanical Tactile Keyboard
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-slate-500 font-medium italic">KB-2024-118</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 clay-input rounded-full text-xs font-bold text-primary">Electronics</span>
+                                        </td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-24 h-2 clay-input rounded-full overflow-hidden">
+                                                    <div class="h-full bg-primary rounded-full shadow-lg"
+                                                        style="width: 55%;"></div>
+                                                </div>
+                                                <span class="text-sm font-bold text-slate-700">42</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 font-bold text-slate-800">$159.00</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-black uppercase tracking-tight shadow-inner">In
+                                                Stock</span>
+                                        </td>
+                                        <td class="px-6 py-5 rounded-r-2xl text-right">
+                                            <button
+                                                class="size-8 rounded-full clay-input flex items-center justify-center text-slate-400 hover:text-primary transition-colors ml-auto">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        class="clay-button-secondary group hover:scale-[1.01] transition-transform cursor-pointer">
+                                        <td class="px-6 py-5 rounded-l-2xl font-bold text-slate-800">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="size-10 rounded-xl clay-input flex items-center justify-center">
+                                                    <span
+                                                        class="material-symbols-outlined text-primary">emoji_objects</span>
+                                                </div>
+                                                Bubble Glass Lamp
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-slate-500 font-medium italic">LP-2024-772</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 clay-input rounded-full text-xs font-bold text-primary">Home
+                                                Decor</span>
+                                        </td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-24 h-2 clay-input rounded-full overflow-hidden">
+                                                    <div class="h-full bg-slate-300 rounded-full shadow-lg"
+                                                        style="width: 0%;"></div>
+                                                </div>
+                                                <span class="text-sm font-bold text-slate-700">0</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 font-bold text-slate-800">$125.00</td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="px-4 py-1.5 bg-rose-100 text-rose-700 rounded-full text-xs font-black uppercase tracking-tight shadow-inner">Out
+                                                of Stock</span>
+                                        </td>
+                                        <td class="px-6 py-5 rounded-r-2xl text-right">
+                                            <button
+                                                class="size-8 rounded-full clay-input flex items-center justify-center text-slate-400 hover:text-primary transition-colors ml-auto">
+                                                <span class="material-symbols-outlined">more_vert</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center px-4">
+                        <p class="text-slate-500 font-medium">Showing 4 of 248 products</p>
+                        <div class="flex gap-2">
+                            <button
+                                class="size-10 flex items-center justify-center clay-button-secondary rounded-xl text-slate-600 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <button
+                                class="w-10 h-10 flex items-center justify-center clay-button-primary rounded-xl text-white font-bold active:scale-95 transition-all">1</button>
+                            <button
+                                class="w-10 h-10 flex items-center justify-center clay-button-secondary rounded-xl text-slate-600 font-bold active:scale-95 transition-all">2</button>
+                            <button
+                                class="w-10 h-10 flex items-center justify-center clay-button-secondary rounded-xl text-slate-600 font-bold active:scale-95 transition-all">3</button>
+                            <button
+                                class="size-10 flex items-center justify-center clay-button-secondary rounded-xl text-slate-600 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

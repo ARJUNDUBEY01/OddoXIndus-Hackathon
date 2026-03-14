@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Inventra | Sign In</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4030e8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1.5rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'clay-card': '20px 20px 60px #bebebe, -20px -20px 60px #ffffff, inset -8px -8px 15px rgba(255,255,255,0.5), inset 8px 8px 15px rgba(0,0,0,0.05)',
+                        'clay-btn': '8px 8px 16px rgba(64, 48, 232, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.8), inset -4px -4px 8px rgba(0, 0, 0, 0.2), inset 4px 4px 8px rgba(255, 255, 255, 0.3)',
+                        'clay-inset': 'inset 6px 6px 12px #d1d1d1, inset -6px -6px 12px #ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            background: radial-gradient(circle at top left, #f0f0ff 0%, #e8e7f3 100%);
+        }
+
+        .clay-card {
+            background: #f6f6f8;
+            box-shadow: 20px 20px 60px #d1d1d6, -20px -20px 60px #ffffff, inset -10px -10px 20px rgba(255, 255, 255, 0.7), inset 10px 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .clay-input {
+            background: #f0f0f4;
+            box-shadow: inset 6px 6px 12px #d1d1d6, inset -6px -6px 12px #ffffff;
+        }
+
+        .clay-button {
+            background: #4030e8;
+            box-shadow: 6px 6px 15px rgba(64, 48, 232, 0.4), inset -4px -4px 10px rgba(0, 0, 0, 0.3), inset 4px 4px 10px rgba(255, 255, 255, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-6">
+    <div class="layout-container w-full max-w-[1200px] flex flex-col items-center">
+        <header class="w-full flex items-center justify-between px-8 py-6 mb-8 absolute top-0 left-0">
+            <div class="flex items-center gap-3 text-slate-900 dark:text-slate-100">
+                <div class="size-10 bg-primary rounded-xl flex items-center justify-center shadow-lg text-white">
+                    <span class="material-symbols-outlined text-2xl">rocket_launch</span>
+                </div>
+                <h2 class="text-xl font-extrabold tracking-tight font-display">Inventra</h2>
+            </div>
+            <button
+                class="clay-card px-6 py-2.5 rounded-full text-slate-600 font-bold text-sm hover:scale-105 transition-transform">
+                Help Center
+            </button>
+        </header>
+        <main class="w-full flex items-center justify-center mt-20">
+            <div
+                class="clay-card w-full max-w-[500px] rounded-xl p-10 md:p-14 flex flex-col items-center gap-8 border border-white/40">
+                <div class="flex flex-col items-center text-center gap-2">
+                    <div class="w-20 h-20 clay-input rounded-full flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-primary text-4xl">fingerprint</span>
+                    </div>
+                    <h1 class="text-slate-900 dark:text-slate-100 text-3xl font-extrabold font-display leading-tight">
+                        Welcome Back</h1>
+                    <p class="text-slate-500 font-medium">Please enter your details to continue</p>
+                </div>
+                <div class="w-full space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-slate-700 dark:text-slate-300 text-sm font-bold px-2">Email Address</label>
+                        <div class="clay-input rounded-xl px-5 py-4 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-slate-400">mail</span>
+                            <input
+                                class="bg-transparent border-none focus:ring-0 text-slate-800 font-medium w-full placeholder:text-slate-400"
+                                placeholder="name@company.com" type="email" />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center px-2">
+                            <label class="text-slate-700 dark:text-slate-300 text-sm font-bold">Password</label>
+                            <a class="text-primary text-xs font-bold hover:underline" href="#">Forgot?</a>
+                        </div>
+                        <div class="clay-input rounded-xl px-5 py-4 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-slate-400">lock</span>
+                            <input
+                                class="bg-transparent border-none focus:ring-0 text-slate-800 font-medium w-full placeholder:text-slate-400"
+                                placeholder="••••••••" type="password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full pt-4">
+                    <button
+                        class="clay-button w-full py-5 rounded-xl text-white font-extrabold text-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition-all">
+                        Sign In
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="flex flex-col items-center gap-6 w-full">
+                    <div class="flex items-center w-full gap-4">
+                        <div class="h-px bg-slate-200 flex-1"></div>
+                        <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Or login with</span>
+                        <div class="h-px bg-slate-200 flex-1"></div>
+                    </div>
+                    <div class="flex gap-4 w-full">
+                        <button
+                            class="clay-card flex-1 py-3 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                            <img class="w-5 h-5" data-alt="Google colorful brand logo icon"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_sGHAlv_iuU7d8v9TAu089EUpkv_f3p_dwdZpnDdUuE88gn6IyMV4CLYElY-cOJ-bxOajkF_vl4SFzEJu4jOwroCpQXiKhkKDxTamm7hiyy_CFv0QBCWPg0JZyedwyyLSXmqWPhD3me7k-iUGr8b8ZevNcQ5BS0WDEFnRTomjo5A9PKhnD_YEharcxt9elCvptE04bwneckFKarYRQDCTL2N15HFV8noGYHdC5reZCj_ySH_lHqRdg8wHYvzaCsquYMzA3vmVGeg" />
+                            <span class="text-slate-700 font-bold text-sm">Google</span>
+                        </button>
+                        <button
+                            class="clay-card flex-1 py-3 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                            <img class="w-5 h-5" data-alt="Apple brand logo icon dark"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-YecTOp7RXgQO5qC5dlfmdkEsa4Zjc1wZ1QiwZS94O0pIx_Z8tLH1wNAdHCPDukdha970FIioMZb1JD6RdQlvb_XN9InDiY1LqFQ2qgtyIBofFAD5iYI1oKDq4YQQkrl4Vbm60jae53gOOxLkGGTKZFlEz9lZ0MnO3o7x096BXO1dbnwZNrQ8j3FrhWE38ORRjzLRCD5PNwycoPLH0-pV0G4yEKgleJ_dlSZzkph0u2XRyNp41bIG-P3Lg5KDLraZhg7AvhtrDdM" />
+                            <span class="text-slate-700 font-bold text-sm">Apple</span>
+                        </button>
+                    </div>
+                </div>
+                <p class="text-slate-500 text-sm font-medium">
+                    Don't have an account? <a class="text-primary font-bold hover:underline" href="#">Create account</a>
+                </p>
+            </div>
+        </main>
+        <footer class="mt-12 text-slate-400 text-xs font-medium space-x-6">
+            <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+            <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+            <span>© 2024 Inventra Inc.</span>
+        </footer>
+    </div>
+    <div class="fixed -bottom-20 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+    <div class="fixed top-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Inventra Dashboard - Claymorphism</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4030e8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1.5rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .clay-card {
+            background: #ffffff;
+            box-shadow: 12px 12px 24px #d1d1d6, -12px -12px 24px #ffffff, inset 4px 4px 8px rgba(255, 255, 255, 0.5), inset -4px -4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .clay-inset {
+            background: #f6f6f8;
+            box-shadow: inset 6px 6px 12px #d1d1d6, inset -6px -6px 12px #ffffff;
+        }
+
+        .clay-primary {
+            background: #4030e8;
+            box-shadow: 8px 8px 16px rgba(64, 48, 232, 0.3), inset 4px 4px 8px rgba(255, 255, 255, 0.3), inset -4px -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .clay-nav-active {
+            background: #ffffff;
+            box-shadow: 6px 6px 12px #e0e0e5, -6px -6px 12px #ffffff, inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-72 h-full flex flex-col p-6 gap-8">
+            <div class="flex items-center gap-3 px-4 py-2">
+                <div class="size-10 clay-primary flex items-center justify-center rounded-xl text-white">
+                    <span class="material-symbols-outlined text-2xl">inventory_2</span>
+                </div>
+                <h2 class="text-xl font-extrabold tracking-tight">Inventra</h2>
+            </div>
+            <nav class="flex flex-col gap-3">
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl clay-nav-active text-primary font-bold" href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">package_2</span>
+                    Inventory
+                </a>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    Orders
+                </a>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">bar_chart_4_bars</span>
+                    Analytics
+                </a>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">description</span>
+                    Reports
+                </a>
+                <div class="mt-10 mb-4 px-5 text-xs font-bold uppercase tracking-widest text-slate-400">Settings</div>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                    Configuration
+                </a>
+                <a class="flex items-center gap-3 px-5 py-3 rounded-xl hover:bg-slate-200/50 transition-colors text-slate-600 font-medium"
+                    href="#">
+                    <span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+            </nav>
+            <div class="mt-auto p-4 clay-card rounded-2xl flex items-center gap-3">
+                <div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+                    <img alt="Avatar" data-alt="User profile photo avatar"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3_WKUCKbyuNHwGswVUq8Oz762B6A9SUSEWfIwm-9ZnX6LnsBvL5ZVMfkJPLIt3YrCizHpQzj3mVpj15VnnxlPUWD_8gXju4G8RqZjDNzIvl25kXU4GVLGKwM1VK02uX-szA1JNBxm542E6WOxLRN7UvD9I5PqLGppsK98-IdrhYmCYMFiNm0enNdUZlJymackVnD6tNneqZvOTPFb1PsOKB1Fei98e9LLJkN6i9edxSJayX5HP01rTJlfeCMb6BvD4tR5HD5KrwA" />
+                </div>
+                <div>
+                    <p class="text-sm font-bold">Alex Rivera</p>
+                    <p class="text-xs text-slate-500">Warehouse Manager</p>
+                </div>
+            </div>
+        </aside>
+        <main class="flex-1 h-full overflow-y-auto p-8">
+            <header class="flex items-center justify-between mb-10">
+                <div class="flex flex-col">
+                    <h1 class="text-3xl font-black tracking-tight">Inventory Dashboard</h1>
+                    <p class="text-slate-500 font-medium">Welcome back, here's what's happening today.</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative clay-inset rounded-xl flex items-center px-4 py-2 w-72">
+                        <span class="material-symbols-outlined text-slate-400 mr-2">search</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-sm w-full font-medium"
+                            placeholder="Search inventory..." type="text" />
+                    </div>
+                    <button class="size-11 clay-card rounded-xl flex items-center justify-center relative">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span
+                            class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
+                </div>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="clay-card p-6 rounded-3xl flex flex-col gap-2">
+                    <div class="flex justify-between items-start">
+                        <div class="size-12 clay-inset rounded-2xl flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">category</span>
+                        </div>
+                        <span class="text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-full">+12.5%</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Total Products</p>
+                        <p class="text-3xl font-black">1,482</p>
+                    </div>
+                </div>
+                <div class="clay-card p-6 rounded-3xl flex flex-col gap-2">
+                    <div class="flex justify-between items-start">
+                        <div class="size-12 clay-inset rounded-2xl flex items-center justify-center text-orange-500">
+                            <span class="material-symbols-outlined">warning</span>
+                        </div>
+                        <span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-full">-5.2%</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Low Stock</p>
+                        <p class="text-3xl font-black text-orange-600">24</p>
+                    </div>
+                </div>
+                <div class="clay-card p-6 rounded-3xl flex flex-col gap-2">
+                    <div class="flex justify-between items-start">
+                        <div class="size-12 clay-inset rounded-2xl flex items-center justify-center text-red-500">
+                            <span class="material-symbols-outlined">block</span>
+                        </div>
+                        <span class="text-xs font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-full">Static</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Out of Stock</p>
+                        <p class="text-3xl font-black text-red-600">8</p>
+                    </div>
+                </div>
+                <div class="clay-card p-6 rounded-3xl flex flex-col gap-2">
+                    <div class="flex justify-between items-start">
+                        <div class="size-12 clay-inset rounded-2xl flex items-center justify-center text-blue-500">
+                            <span class="material-symbols-outlined">account_balance_wallet</span>
+                        </div>
+                        <span class="text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-full">+8.1%</span>
+                    </div>
+                    <div>
+                        <p class="text-slate-500 text-sm font-bold uppercase tracking-wider mb-1">Stock Value</p>
+                        <p class="text-3xl font-black">$52.4k</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 clay-card p-8 rounded-[3rem]">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <h3 class="text-xl font-black">Stock Trends</h3>
+                            <p class="text-slate-500 text-sm">Monthly inventory movement overview</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="px-4 py-2 clay-inset rounded-xl text-xs font-bold text-primary">Inbound</button>
+                            <button class="px-4 py-2 bg-transparent text-slate-400 text-xs font-bold">Outbound</button>
+                        </div>
+                    </div>
+                    <div class="h-64 w-full clay-inset rounded-3xl p-6 relative flex items-end">
+                        <svg class="w-full h-full drop-shadow-lg overflow-visible" viewbox="0 0 500 150">
+                            <defs>
+                                <lineargradient id="grad" x1="0%" x2="0%" y1="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color: #4030e8; stop-opacity: 0.2"></stop>
+                                    <stop offset="100%" style="stop-color: #4030e8; stop-opacity: 0"></stop>
+                                </lineargradient>
+                            </defs>
+                            <path
+                                d="M0,120 C50,110 80,40 120,60 C160,80 200,20 250,50 C300,80 350,130 400,100 C450,70 500,90 500,90 L500,150 L0,150 Z"
+                                fill="url(#grad)"></path>
+                            <path
+                                d="M0,120 C50,110 80,40 120,60 C160,80 200,20 250,50 C300,80 350,130 400,100 C450,70 500,90 500,90"
+                                fill="none" stroke="#4030e8" stroke-linecap="round" stroke-width="4"></path>
+                            <circle cx="250" cy="50" fill="#4030e8" r="6" stroke="white" stroke-width="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="flex justify-between mt-6 px-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Jan</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Feb</span>
+                        <span
+                            class="text-xs font-bold text-slate-400 uppercase tracking-tighter text-primary">Mar</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Apr</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">May</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Jun</span>
+                    </div>
+                </div>
+                <div class="clay-card p-8 rounded-[3rem]">
+                    <h3 class="text-xl font-black mb-6">Recent Activity</h3>
+                    <div class="flex flex-col gap-6">
+                        <div class="flex gap-4 items-center">
+                            <div class="size-10 clay-inset rounded-xl flex items-center justify-center text-green-500">
+                                <span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold">New Order #8921</p>
+                                <p class="text-xs text-slate-400">2 mins ago</p>
+                            </div>
+                            <p class="text-xs font-black">+$420</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="size-10 clay-inset rounded-xl flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-xl">sync</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold">Stock Refill: Laptops</p>
+                                <p class="text-xs text-slate-400">45 mins ago</p>
+                            </div>
+                            <p class="text-xs font-black">+24 units</p>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="size-10 clay-inset rounded-xl flex items-center justify-center text-orange-500">
+                                <span class="material-symbols-outlined text-xl">report</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold">Low stock alert: Cameras</p>
+                                <p class="text-xs text-slate-400">1 hour ago</p>
+                            </div>
+                            <span class="size-2 bg-orange-500 rounded-full animate-pulse"></span>
+                        </div>
+                        <div class="flex gap-4 items-center">
+                            <div class="size-10 clay-inset rounded-xl flex items-center justify-center text-blue-500">
+                                <span class="material-symbols-outlined text-xl">local_shipping</span>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-bold">Shipment Dispatched</p>
+                                <p class="text-xs text-slate-400">3 hours ago</p>
+                            </div>
+                            <p class="text-xs font-black">4 orders</p>
+                        </div>
+                        <button class="mt-4 w-full py-4 clay-inset rounded-2xl text-primary font-bold text-sm">
+                            View All Activity
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="clay-card rounded-[3rem] p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-black">Top Selling Items</h3>
+                        <span class="material-symbols-outlined text-slate-400 cursor-pointer">more_horiz</span>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl clay-inset">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 border-b border-slate-100">
+                                <tr>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase text-slate-400">Product</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase text-slate-400">Sold</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase text-slate-400">Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-sm">MacBook Pro 14"</td>
+                                    <td class="px-6 py-4 text-sm">84 units</td>
+                                    <td class="px-6 py-4 text-sm font-black text-primary">$168,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-sm">iPhone 15 Case</td>
+                                    <td class="px-6 py-4 text-sm">342 units</td>
+                                    <td class="px-6 py-4 text-sm font-black text-primary">$8,550</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-bold text-sm">AirPods Pro Gen 2</td>
+                                    <td class="px-6 py-4 text-sm">118 units</td>
+                                    <td class="px-6 py-4 text-sm font-black text-primary">$29,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clay-card rounded-[3rem] p-8 flex flex-col items-center justify-center text-center gap-6">
+                    <div class="size-24 clay-primary rounded-full flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-5xl">rocket_launch</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black">Upgrade to Pro</h3>
+                        <p class="text-slate-500 max-w-xs mx-auto mt-2">Get AI-powered stock forecasting and
+                            multi-warehouse management tools.</p>
+                    </div>
+                    <button
+                        class="px-10 py-4 clay-primary text-white font-bold rounded-2xl hover:scale-105 transition-transform">
+                        Explore Pro Features
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

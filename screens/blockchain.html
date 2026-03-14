@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Inventra | Blockchain Ledger</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4030e8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#121121",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .clay-card {
+            background: #ffffff;
+            box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.05),
+                inset -6px -6px 12px rgba(0, 0, 0, 0.05),
+                inset 6px 6px 12px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .clay-card-dark {
+            background: #1e1b3a;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3),
+                inset -6px -6px 12px rgba(255, 255, 255, 0.05),
+                inset 6px 6px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .clay-pill {
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.05),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.9);
+        }
+
+        .clay-button {
+            box-shadow: 6px 6px 12px rgba(64, 48, 232, 0.2),
+                inset -4px -4px 8px rgba(0, 0, 0, 0.1),
+                inset 4px 4px 8px rgba(255, 255, 255, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .clay-button:active {
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+                inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between border-b border-primary/10 px-6 py-4 lg:px-20 bg-white/50 dark:bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
+                <div class="flex items-center gap-10">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-primary rounded-xl clay-pill">
+                            <span class="material-symbols-outlined text-white">hive</span>
+                        </div>
+                        <h2 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Inventra</h2>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                            href="#">Dashboard</a>
+                        <a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">Ledger</a>
+                        <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                            href="#">Nodes</a>
+                        <a class="text-slate-600 dark:text-slate-400 text-sm font-semibold hover:text-primary transition-colors"
+                            href="#">Settings</a>
+                    </nav>
+                </div>
+                <div class="flex flex-1 justify-end gap-6 items-center">
+                    <div class="relative hidden sm:block w-full max-w-xs">
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+                        <input
+                            class="w-full pl-10 pr-4 py-2 rounded-full border-none bg-primary/5 dark:bg-white/5 focus:ring-2 focus:ring-primary/20 text-sm"
+                            placeholder="Search blocks..." type="text" />
+                    </div>
+                    <div
+                        class="h-10 w-10 rounded-full bg-primary/20 clay-pill overflow-hidden border-2 border-white dark:border-slate-800">
+                        <img class="w-full h-full object-cover" data-alt="User profile avatar portrait"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv8WWQkZ4dHY4FUyj_0KhyDERb8_natPgftWCYH1qZhzCFDLwL6GenrscFA7TFCHdrxS6ZOz_guL7aq7ptdsmt_vVtwNFTXEvk_uL13vaT7KQRXrQisq1BkPwQ1T4atFp7MzhQdJ1_QbU-gwV1yEarBy3nkuN37VxQMAmNkr3q0auFlg0dBzbVufBb0OgLpwC-NoJI-2Z6JFyqbAFMW0htECecd8g6TGjXHYaQJcuduMONxPbpeY8jyB-EUUDf1_MNkajDTSDJyPM" />
+                    </div>
+                </div>
+            </header>
+            <main class="flex-1 px-6 lg:px-20 py-10 max-w-7xl mx-auto w-full">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+                    <div>
+                        <h1 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-2">Blockchain
+                            Ledger</h1>
+                        <p class="text-slate-500 dark:text-slate-400 text-lg">Real-time verification of decentralized
+                            transactions</p>
+                    </div>
+                    <button
+                        class="clay-button bg-primary text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 group">
+                        <span
+                            class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">verified_user</span>
+                        Verify Blockchain Integrity
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="clay-card dark:clay-card-dark rounded-xl p-8 flex flex-col gap-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-500 dark:text-slate-400 font-medium">Total Blocks</span>
+                            <span class="material-symbols-outlined text-primary">view_in_ar</span>
+                        </div>
+                        <p class="text-3xl font-extrabold text-slate-900 dark:text-white">1,240,582</p>
+                        <div class="flex items-center gap-1 text-emerald-500 text-sm font-bold">
+                            <span class="material-symbols-outlined text-xs">trending_up</span>
+                            <span>+1.2%</span>
+                        </div>
+                    </div>
+                    <div class="clay-card dark:clay-card-dark rounded-xl p-8 flex flex-col gap-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-500 dark:text-slate-400 font-medium">Hash Rate</span>
+                            <span class="material-symbols-outlined text-primary">speed</span>
+                        </div>
+                        <p class="text-3xl font-extrabold text-slate-900 dark:text-white">142.5 TH/s</p>
+                        <div class="flex items-center gap-1 text-emerald-500 text-sm font-bold">
+                            <span class="material-symbols-outlined text-xs">trending_up</span>
+                            <span>+0.5%</span>
+                        </div>
+                    </div>
+                    <div class="clay-card dark:clay-card-dark rounded-xl p-8 flex flex-col gap-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-500 dark:text-slate-400 font-medium">Active Nodes</span>
+                            <span class="material-symbols-outlined text-primary">hub</span>
+                        </div>
+                        <p class="text-3xl font-extrabold text-slate-900 dark:text-white">8,421</p>
+                        <div class="flex items-center gap-1 text-rose-500 text-sm font-bold">
+                            <span class="material-symbols-outlined text-xs">trending_down</span>
+                            <span>-0.1%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clay-card dark:clay-card-dark rounded-xl overflow-hidden p-2">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-separate border-spacing-y-2 px-4">
+                            <thead>
+                                <tr
+                                    class="text-slate-400 dark:text-slate-500 text-sm font-bold uppercase tracking-wider">
+                                    <th class="px-6 py-4">Block Height</th>
+                                    <th class="px-6 py-4">Timestamp</th>
+                                    <th class="px-6 py-4">Transaction Hash</th>
+                                    <th class="px-6 py-4">Status</th>
+                                    <th class="px-6 py-4 text-right">Integrity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="group hover:bg-primary/5 transition-colors rounded-xl">
+                                    <td class="px-6 py-6 font-bold text-slate-900 dark:text-white">#1240582</td>
+                                    <td class="px-6 py-6 text-slate-500 dark:text-slate-400">2023-10-27 10:15:30</td>
+                                    <td class="px-6 py-6 font-mono text-sm text-primary">0x7f3...a92</td>
+                                    <td class="px-6 py-6">
+                                        <span
+                                            class="clay-pill bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Verified
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-6 text-right">
+                                        <button class="text-primary hover:underline font-bold text-sm">View
+                                            Details</button>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-primary/5 transition-colors rounded-xl">
+                                    <td class="px-6 py-6 font-bold text-slate-900 dark:text-white">#1240581</td>
+                                    <td class="px-6 py-6 text-slate-500 dark:text-slate-400">2023-10-27 10:14:12</td>
+                                    <td class="px-6 py-6 font-mono text-sm text-primary">0x4a1...eef</td>
+                                    <td class="px-6 py-6">
+                                        <span
+                                            class="clay-pill bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Verified
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-6 text-right">
+                                        <button class="text-primary hover:underline font-bold text-sm">View
+                                            Details</button>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-primary/5 transition-colors rounded-xl">
+                                    <td class="px-6 py-6 font-bold text-slate-900 dark:text-white">#1240580</td>
+                                    <td class="px-6 py-6 text-slate-500 dark:text-slate-400">2023-10-27 10:13:05</td>
+                                    <td class="px-6 py-6 font-mono text-sm text-primary">0x9b2...cc1</td>
+                                    <td class="px-6 py-6">
+                                        <span
+                                            class="clay-pill bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">pending</span>
+                                            Pending
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-6 text-right">
+                                        <button class="text-primary hover:underline font-bold text-sm">View
+                                            Details</button>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-primary/5 transition-colors rounded-xl">
+                                    <td class="px-6 py-6 font-bold text-slate-900 dark:text-white">#1240579</td>
+                                    <td class="px-6 py-6 text-slate-500 dark:text-slate-400">2023-10-27 10:12:45</td>
+                                    <td class="px-6 py-6 font-mono text-sm text-primary">0x1d8...ff0</td>
+                                    <td class="px-6 py-6">
+                                        <span
+                                            class="clay-pill bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Verified
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-6 text-right">
+                                        <button class="text-primary hover:underline font-bold text-sm">View
+                                            Details</button>
+                                    </td>
+                                </tr>
+                                <tr class="group hover:bg-primary/5 transition-colors rounded-xl">
+                                    <td class="px-6 py-6 font-bold text-slate-900 dark:text-white">#1240578</td>
+                                    <td class="px-6 py-6 text-slate-500 dark:text-slate-400">2023-10-27 10:11:59</td>
+                                    <td class="px-6 py-6 font-mono text-sm text-primary">0xbc4...33a</td>
+                                    <td class="px-6 py-6">
+                                        <span
+                                            class="clay-pill bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-4 py-1.5 rounded-full text-xs font-bold inline-flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                            Verified
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-6 text-right">
+                                        <button class="text-primary hover:underline font-bold text-sm">View
+                                            Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-8 flex justify-center border-t border-slate-100 dark:border-slate-800">
+                        <nav class="flex items-center gap-2">
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-primary text-white rounded-lg font-bold">1</button>
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">2</button>
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">3</button>
+                            <span class="mx-2 text-slate-400">...</span>
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">120</button>
+                            <button
+                                class="clay-pill h-10 w-10 flex items-center justify-center bg-white dark:bg-slate-800 rounded-lg text-slate-600 dark:text-slate-400">
+                                <span class="material-symbols-outlined">chevron_right</span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Security Overview</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 clay-card dark:clay-card-dark rounded-xl">
+                                <div class="bg-primary/20 p-3 rounded-full text-primary clay-pill">
+                                    <span class="material-symbols-outlined">shield</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-slate-900 dark:text-white">Immutability Score</p>
+                                    <p class="text-sm text-slate-500">99.9% Consensus achieved</p>
+                                </div>
+                                <div class="w-24 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[99%]"></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 clay-card dark:clay-card-dark rounded-xl">
+                                <div class="bg-primary/20 p-3 rounded-full text-primary clay-pill">
+                                    <span class="material-symbols-outlined">lan</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-slate-900 dark:text-white">Node Distribution</p>
+                                    <p class="text-sm text-slate-500">Global decentralization healthy</p>
+                                </div>
+                                <div class="w-24 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[85%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Quick Insights</h3>
+                        <div
+                            class="p-8 clay-card dark:clay-card-dark rounded-xl bg-primary/5 border-primary/20 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-10 -top-10 opacity-10 rotate-12 transition-transform group-hover:scale-110 duration-700">
+                                <span class="material-symbols-outlined text-[200px] text-primary">token</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-primary mb-4">Latest Consensus Update</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                                The Inventra network has successfully transitioned to protocol version 2.4.1. All
+                                validators have confirmed block #1240582 as the current head. Transaction throughput is
+                                currently peaking at 2,400 TPS.
+                            </p>
+                            <button class="font-bold text-primary flex items-center gap-2 group">
+                                Read Release Notes
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="mt-20 px-6 lg:px-20 py-12 border-t border-slate-100 dark:border-slate-800">
+                <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-3">
+                        <div class="p-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg">
+                            <span class="material-symbols-outlined text-slate-500">hive</span>
+                        </div>
+                        <span class="font-bold text-slate-900 dark:text-white">Inventra Blockchain OS</span>
+                    </div>
+                    <p class="text-slate-400 text-sm">© 2023 Inventra Technologies. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a class="text-slate-400 hover:text-primary transition-colors" href="#">Privacy</a>
+                        <a class="text-slate-400 hover:text-primary transition-colors" href="#">Terms</a>
+                        <a class="text-slate-400 hover:text-primary transition-colors" href="#">Documentation</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
